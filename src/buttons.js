@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import ModeEditIcon from 'material-ui-icons/ModeEdit';
+// import ModeEditIcon from 'material-ui-icons/ModeEdit';
 
 const styleSheet = createStyleSheet(theme => ({
   button: {

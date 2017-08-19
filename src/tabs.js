@@ -33,21 +33,21 @@ const styleSheet = createStyleSheet(theme => ({
 class BasicTabs extends Component {
   state = {
     index: 0,
+    posts: [],
   };
   handleChange = (event, index) => {
     this.setState({ index });
-    // switch(index){
-    //   case 0:
-    //   // 127.0.0.1:3000/posts?sortBy=d
-    //   {
-    //     myString = 'this is first tab';
-    //   }
-    //   case 1:
-    //     myString = 'this is second tab';
-    //   case 2:
-    //     myString = 'this is third tab';
-    //   default:
-    // };
+    switch(index){
+      case 0:
+      const a = fetch('http://localhost:4000/posts',{
+        method: 'GET',
+      })
+      this.setState( { a })
+      break;
+      default:
+
+    }
+    // const posts = JSON.parse(a).data;
   };
 
   render() {
@@ -98,7 +98,7 @@ class BasicTabs extends Component {
             {/* console.log('hhh') */}
         {this.state.index === 2 &&
           <TabContainer>
-            {'Item Three'}
+            {`Item Three ${this.state.posts[0]}`}
           </TabContainer>}
       </div>
     );
