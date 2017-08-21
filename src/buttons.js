@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
@@ -16,7 +15,7 @@ function FloatingActionButtons(props) {
   const classes = props.classes;
   return (
     <div>
-      <Button fab color="accent" aria-label="add" className={classes.button}>
+      <Button fab color='accent' aria-label="add" className={classes.button}>
         <AddIcon />
       </Button>
     </div>

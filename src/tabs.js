@@ -11,6 +11,9 @@ import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
+import SimpleCard from './cards.js'
+
+
 
 const TabContainer = props =>
   <div style={{ padding: 20 }}>
@@ -29,30 +32,37 @@ const styleSheet = createStyleSheet(theme => ({
   },
 }));
 
-  // let myString =  '';
 class BasicTabs extends Component {
   state = {
     index: 0,
     posts: [],
   };
-  handleChange = (event, index) => {
+  handleChange = async (event, index) => {
     this.setState({ index });
+    let url;
     switch(index){
       case 0:
-      const a = fetch('http://localhost:4000/posts',{
-        method: 'GET',
-      })
-      this.setState( { a })
+      url = 'http://localhost:4000/posts';
+      break;
+      case 1:
+      url = 'http://localhost:4000/posts?sortBy=time';
+      break;
+      case 2:
+      url = 'http://localhost:4000/posts?sortBy=downvote';
       break;
       default:
-
     }
-    // const posts = JSON.parse(a).data;
+    const response = await fetch(url);
+    const posts = await response.json();
+    this.setState({ posts });
+
   };
 
   render() {
     const classes = this.props.classes;
-
+    if (this.state.posts === undefined ){
+      return null
+    }
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -71,34 +81,22 @@ class BasicTabs extends Component {
           <TabContainer>
             {
               <div>
-              <Typography type="title" color="inherit">
-            {this.state.index}
-          </Typography>
-
-              <Card centered>
-              <CardContent>
-                <Typography type="headline" component="h2">
-                  This is title with url
-                </Typography>
-                <Typography type="body1" >
-                  This is body <br />
-                  bodybodybody
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button dense flat>This is comment</Button>
-              </CardActions>
-            </Card>
-            </div>}
+                {`Item One ${this.state.index}` }
+                {this.state.posts.map(SimpleCard)}
+              </div>}
           </TabContainer>}
         {this.state.index === 1 &&
           <TabContainer>
+            <div>
             {`Item Two ${this.state.index}` }
+            {SimpleCard(this.state.posts[0])}
+          </div>
           </TabContainer>}
             {/* console.log('hhh') */}
         {this.state.index === 2 &&
           <TabContainer>
-            {`Item Three ${this.state.posts[0]}`}
+            {`Item Three ${this.state.index}`}
+            {this.state.posts.map(SimpleCard)}
           </TabContainer>}
       </div>
     );
