@@ -9,8 +9,6 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 
 import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import SimpleCard from './cards.js'
 
 
@@ -74,7 +72,7 @@ class BasicTabs extends Component {
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
             <Tab label="Hot" />
             <Tab label="New" />
-            <Tab label="Top 10" />
+            <Tab label="Controversial" />
           </Tabs>
         </AppBar>
         {this.state.index === 0 &&
@@ -88,8 +86,8 @@ class BasicTabs extends Component {
         {this.state.index === 1 &&
           <TabContainer>
             <div>
-            {`Item Two ${this.state.index}` }
-            {SimpleCard(this.state.posts[0])}
+              {`Item Two ${this.state.index}` }
+              {this.state.posts.map(SimpleCard)}
           </div>
           </TabContainer>}
             {/* console.log('hhh') */}
