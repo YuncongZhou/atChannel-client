@@ -2,34 +2,30 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardHeader, CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import 'typeface-roboto';
+import renderHTML from 'react-render-html';
 
 function SimpleCard(props) {
   if (props === undefined ){
     return null
   }
   return (
-    <div>
-      <Card >
+    <div  key={props['_id']}>
+      <Card>
+        <CardHeader title={renderHTML(`<a href="${props['url']}">${props['title']}</a>` )}/>
         <CardContent>
-          <Typography type="body1">
-            {props['_id']}
-          </Typography>
-          <Typography type="headline" component="h2">
-            {props['title']}
-          </Typography>
-          <Typography type="body1" >
-            adjective
+          <Typography type="body2" >
+            {props['body']}
           </Typography>
           <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
+           submitted on {props['timestamp']}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense>Learn More</Button>
+          <Button dense>comments{props['child_ids'].length}</Button>
         </CardActions>
       </Card>
     </div>
