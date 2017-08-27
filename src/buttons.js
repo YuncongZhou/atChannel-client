@@ -8,14 +8,19 @@ import AddIcon from 'material-ui-icons/Add';
 const styleSheet = createStyleSheet(theme => ({
   button: {
     margin: theme.spacing.unit,
+    position: 'fixed',
   },
 }));
+
+const handleClick =() =>{
+  console.log('hello')
+}
 
 function FloatingActionButtons(props) {
   const classes = props.classes;
   return (
     <div>
-      <Button fab color='accent' aria-label="add" className={classes.button}>
+      <Button fab color='accent' aria-label="add" className={classes.button} style={{ position: 'fixed', bottom: 50, right: 50 }} onClick={handleClick}>
         <AddIcon />
       </Button>
     </div>

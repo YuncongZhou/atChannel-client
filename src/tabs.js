@@ -31,10 +31,21 @@ const styleSheet = createStyleSheet(theme => ({
 }));
 
 class BasicTabs extends Component {
-  state = {
-    index: 0,
-    posts: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+      posts: [],
+    };
+    this.getDate();
+  }
+
+  getDate = async ( ) => {
+    const a = await fetch('http://localhost:4000/posts');
+    const posts = await a.json();
+    this.setState({ posts });
+  }
+
   handleChange = async (event, index) => {
     this.setState({ index });
     let url;
