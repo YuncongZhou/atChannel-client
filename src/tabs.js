@@ -41,8 +41,8 @@ class BasicTabs extends Component {
   }
 
   getDate = async ( ) => {
-    const a = await fetch('http://localhost:4000/posts');
-    const posts = await a.json();
+    const data = await fetch('http://localhost:4000/posts');
+    const posts = await data.json();
     this.setState({ posts });
   }
 
