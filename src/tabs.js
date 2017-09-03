@@ -77,7 +77,7 @@ class BasicTabs extends Component {
         <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit">
-            Braavos Today
+            @chan
           </Typography>
         </Toolbar>
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
