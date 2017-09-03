@@ -25,7 +25,7 @@ function SimpleCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense>comments{props['child_ids'].length}</Button>
+          <Button dense>{props['child_ids'].length} comments</Button>
         </CardActions>
       </Card>
     </div>
