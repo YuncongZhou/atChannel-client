@@ -74,11 +74,10 @@ class BasicTabs extends Component {
     }
     return (
       <div className={classes.root}>
-        {/* <AppBar position="static">
-        </AppBar> */}
+        <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit">
-            @chan
+            Braavos Today
           </Typography>
         </Toolbar>
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
@@ -86,6 +85,7 @@ class BasicTabs extends Component {
             <Tab label="New" />
             <Tab label="Controversial" />
           </Tabs>
+        </AppBar>
         {this.state.index === 0 &&
           <TabContainer>
             {

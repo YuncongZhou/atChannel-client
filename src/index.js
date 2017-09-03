@@ -8,10 +8,10 @@ import SimpleDialogDemo from './dialog.js'
 const App = () => {
   return (
     <div>
-      <SimpleDialogDemo />
-        {/* </SimpleDialogDemo> */}
-       <BasicTabs />
-      {/* </BasicTabs> */}
+      <SimpleDialogDemo>
+        </SimpleDialogDemo>
+       <BasicTabs>
+      </BasicTabs>
       {/* <FloatingActionButtons>
       </FloatingActionButtons> */}
     </div>
