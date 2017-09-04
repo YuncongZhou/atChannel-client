@@ -117,18 +117,18 @@ class SimpleDialogDemo extends Component {
         {/* <Typography type="subheading">
           Selected: {this.state.selectedValue}
         </Typography> */}
-        <br />
+        {/* <br /> */}
         <Button fab color='accent' aria-label="add" style={{ position: 'fixed', bottom: 50, right: 50 }} onClick={() => this.setState({ open: true })}>
         <AddIcon />
         </Button>
         {/* <FloatingActionButtons onClick={() => this.setState({ open: true })}>
       </FloatingActionButtons> */}
         <SimpleDialogWrapped
-          selectedValue={this.state.selectedValue}
           open={this.state.open}
           onRequestClose={this.handleRequestClose}
         />
       </div>
+          // selectedValue={this.state.selectedValue}
     );
   }
 }

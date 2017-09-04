@@ -4,11 +4,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
-
-import Typography from 'material-ui/Typography';
+import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+
 import SimpleCard from './cards.js'
 
 
@@ -48,16 +48,17 @@ class BasicTabs extends Component {
 
   handleChange = async (event, index) => {
     this.setState({ index });
+    const homepage = 'http://localhost:4000/posts'
     let url;
     switch(index){
       case 0:
-      url = 'http://localhost:4000/posts';
+      url = homepage;
       break;
       case 1:
-      url = 'http://localhost:4000/posts?sortBy=time';
+      url = `${homepage}?sortBy=time`;
       break;
       case 2:
-      url = 'http://localhost:4000/posts?sortBy=downvote';
+      url = `${homepage}?sortBy=downvote`;
       break;
       default:
     }
@@ -74,18 +75,18 @@ class BasicTabs extends Component {
     }
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        {/* <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit">
             @chan
           </Typography>
         </Toolbar>
+        </AppBar> */}
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
             <Tab label="Hot" />
             <Tab label="New" />
             <Tab label="Controversial" />
           </Tabs>
-        </AppBar>
         {this.state.index === 0 &&
           <TabContainer>
             {
