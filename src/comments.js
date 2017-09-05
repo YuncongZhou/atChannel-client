@@ -13,7 +13,6 @@ class Comments extends Component {
   getComments = async( id ) => {
     const url = `http://localhost:4000/comments/${id}`
     const response = await fetch(url);
-    console.log(response)
     if (response.ok) {
       const comments = await response.json();
       this.setState({ comments });
