@@ -22,9 +22,7 @@ function SimpleCard(props) {
   if (props.url) {
     titleClick = renderHTML(`<a href="${props['url']}">${props['title']}</a>` );
   } else {
-    // titleClick = props['title'];
-    // titleClick = renderHTML(`<a href="${linking}">${props['title']}</a>` );
-    titleClick = renderHTML(`<a href="/about">${props['title']}</a>` );
+    titleClick = renderHTML(`<a href="/comments/${props['_id']}">${props['title']}</a>` );
   };
 
   const About = () => (
@@ -37,6 +35,27 @@ function SimpleCard(props) {
       <h2>Home</h2>
     </div>
   )
+
+  const upvote = () => vote(1)
+  const downvote = () => vote(0)
+
+  const vote = ( like ) => {
+    let body;
+    if (like) {
+      body = {direction: 1}
+    } else {
+      body = {direction: 0}
+    }
+    const url = `http://localhost:4000/votes/${props['_id']}`
+    const a = fetch(url, {
+      method: 'put',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+  }
 
   return (
     <div  key={props['_id']}>
@@ -56,7 +75,9 @@ function SimpleCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense>{props['child_ids'].length} comments</Button>
+          <Button href={`http://localhost:3000/comments/${props['_id']}`} dense>comments</Button>
+          <Button dense onClick={upvote}>{props['upvote']} UPVOTE</Button>
+          <Button dense onClick={downvote}>{props['downvote']} DOWNVOTE</Button>
         </CardActions>
       </Card>
     </div>
