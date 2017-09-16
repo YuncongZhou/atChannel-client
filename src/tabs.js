@@ -5,13 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-
 import SimpleCard from './cards.js'
-
-
 
 const TabContainer = props =>
   <div style={{ padding: 20 }}>
@@ -41,14 +35,14 @@ class BasicTabs extends Component {
   }
 
   getDate = async ( ) => {
-    const data = await fetch(`${process.env.REACT_APP_API_ROOT}posts`);
+    const data = await fetch(`${process.env.REACT_APP_API_ROOT}/posts`);
     const posts = await data.json();
     this.setState({ posts });
   }
 
   handleChange = async (event, index) => {
     this.setState({ index });
-    const homepage = `${process.env.REACT_APP_API_ROOT}posts`
+    const homepage = `${process.env.REACT_APP_API_ROOT}/posts`
     let url;
     switch(index){
       case 0:
@@ -65,7 +59,6 @@ class BasicTabs extends Component {
     const response = await fetch(url);
     const posts = await response.json();
     this.setState({ posts });
-
   };
 
   render() {
@@ -93,7 +86,6 @@ class BasicTabs extends Component {
               {this.state.posts.map(SimpleCard)}
           </div>
           </TabContainer>}
-            {/* console.log('hhh') */}
         {this.state.index === 2 &&
           <TabContainer>
             {this.state.posts.map(SimpleCard)}

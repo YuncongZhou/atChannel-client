@@ -1,9 +1,8 @@
 // import React from 'react';
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import 'typeface-roboto'
 import BasicTabs from './tabs.js'
-import FloatingActionButtons from './mainbutton.js'
 import SimpleDialogDemo from './dialog.js'
 import {
   BrowserRouter as Router,

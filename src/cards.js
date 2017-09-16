@@ -7,34 +7,17 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import 'typeface-roboto';
 import renderHTML from 'react-render-html';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
 
 function SimpleCard(props) {
   if (props === undefined ){
     return null
   }
   let titleClick;
-  const linking  = `/post/${props._id}`
   if (props.url) {
     titleClick = renderHTML(`<a href="${props['url']}">${props['title']}</a>` );
   } else {
     titleClick = renderHTML(`<a href="/comments/${props['_id']}">${props['title']}</a>` );
   };
-
-  const About = () => (
-    <div>
-      <h2>About</h2>
-    </div>
-  )
-  const Home = () => (
-    <div>
-      <h2>Home</h2>
-    </div>
-  )
 
   const upvote = () => vote(1)
   const downvote = () => vote(0)
@@ -46,8 +29,8 @@ function SimpleCard(props) {
     } else {
       body = {direction: 0}
     }
-    const url = `${process.env.REACT_APP_API_ROOT}votes/${props['_id']}`
-    const a = fetch(url, {
+    const url = `${process.env.REACT_APP_API_ROOT}/votes/${props['_id']}`
+    fetch(url, {
       method: 'put',
       body: JSON.stringify(body),
       headers: {
@@ -71,8 +54,8 @@ function SimpleCard(props) {
         </CardContent>
         <CardActions>
           <Button href={`/comments/${props['_id']}`} dense>comments</Button>
-          <Button dense onClick={upvote}>{props['upvote']} UPVOTE</Button>
-          <Button dense onClick={downvote}>{props['downvote']} DOWNVOTE</Button>
+          <Button href={`/comments/${props['_id']}`} dense onClick={upvote}>{props['upvote']} UPVOTE</Button>
+          <Button href={`/comments/${props['_id']}`} dense onClick={downvote}>{props['downvote']} DOWNVOTE</Button>
         </CardActions>
       </Card>
     </div>
