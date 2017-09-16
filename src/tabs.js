@@ -41,14 +41,14 @@ class BasicTabs extends Component {
   }
 
   getDate = async ( ) => {
-    const data = await fetch('http://localhost:4000/posts');
+    const data = await fetch(`${process.env.REACT_APP_API_ROOT}posts`);
     const posts = await data.json();
     this.setState({ posts });
   }
 
   handleChange = async (event, index) => {
     this.setState({ index });
-    const homepage = 'http://localhost:4000/posts'
+    const homepage = `${process.env.REACT_APP_API_ROOT}posts`
     let url;
     switch(index){
       case 0:
@@ -75,13 +75,6 @@ class BasicTabs extends Component {
     }
     return (
       <div className={classes.root}>
-        {/* <AppBar position="static">
-        <Toolbar>
-          <Typography type="title" color="inherit">
-            @chan
-          </Typography>
-        </Toolbar>
-        </AppBar> */}
           <Tabs index={this.state.index} onChange={this.handleChange} centered>
             <Tab label="Hot" />
             <Tab label="New" />
@@ -91,21 +84,18 @@ class BasicTabs extends Component {
           <TabContainer>
             {
               <div>
-                {`Item One ${this.state.index}` }
                 {this.state.posts.map(SimpleCard)}
               </div>}
           </TabContainer>}
         {this.state.index === 1 &&
           <TabContainer>
             <div>
-              {`Item Two ${this.state.index}` }
               {this.state.posts.map(SimpleCard)}
           </div>
           </TabContainer>}
             {/* console.log('hhh') */}
         {this.state.index === 2 &&
           <TabContainer>
-            {`Item Three ${this.state.index}`}
             {this.state.posts.map(SimpleCard)}
           </TabContainer>}
       </div>

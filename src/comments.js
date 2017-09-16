@@ -7,11 +7,12 @@ class Comments extends Component {
     this.state = {
       comments: [],
     };
-    this.getComments(this.props.match.params.id);
+
+    const url = `${process.env.REACT_APP_API_ROOT}comments/${this.props.match.params.id}`
+    this.getComments(url);
   }
 
-  getComments = async( id ) => {
-    const url = `http://localhost:4000/comments/${id}`
+  getComments = async( url ) => {
     const response = await fetch(url);
     if (response.ok) {
       const comments = await response.json();
