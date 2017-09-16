@@ -7,12 +7,11 @@ class Comments extends Component {
     this.state = {
       comments: [],
     };
-
-    const url = `${process.env.REACT_APP_API_ROOT}comments/${this.props.match.params.id}`
-    this.getComments(url);
+    this.getComments(this.props.match.params.id);
   }
 
-  getComments = async( url ) => {
+  getComments = async( id ) => {
+    const url = `${process.env.REACT_APP_API_ROOT}/comments/${id}`
     const response = await fetch(url);
     if (response.ok) {
       const comments = await response.json();
@@ -21,19 +20,18 @@ class Comments extends Component {
       const comments = undefined;
       this.setState({ comments });
     }
-}
+  }
 
 render () {
-  if (this.state.comments === undefined ){
-    return (<div><h2>Cannot find a valid comment here.</h2></div>)
+    if (this.state.comments === undefined ){
+      return (<div><h2>Cannot find a valid comment here.</h2></div>)
+    }
+    return (
+      <div>
+        {this.state.comments.map(SimpleCard)}
+        </div>
+    )
   }
-  return (
-    <div>
-      {this.state.comments.map(SimpleCard)}
-      </div>
-  )
-}
-
 }
 
 export default Comments
