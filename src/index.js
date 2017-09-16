@@ -29,14 +29,12 @@ const App = () => {
     <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit">
-            <Link to='/'>@chan</Link>
+            <Link to='/'>@Channel.tech</Link>
           </Typography>
         </Toolbar>
         </AppBar>
          <Route exact path="/" component={Home}/>
          <Route path="/comments/:id" component={Comments} />
-      {/* <FloatingActionButtons>
-      </FloatingActionButtons> */}
     </div>
     </Router>
   );

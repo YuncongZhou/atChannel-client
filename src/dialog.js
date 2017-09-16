@@ -13,16 +13,25 @@ import Typography from 'material-ui/Typography';
 import Input from 'material-ui/Input/Input';
 // import FloatingActionButtons from './mainbutton.js'
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+// const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 class SimpleDialog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      url: '',
+      body: '',
+    };
+    // this.getDate();
+  }
   handleRequestClose = () => {
     this.props.onRequestClose(this.props.selectedValue);
   };
 
-  handleListItemClick = value => {
-    this.props.onRequestClose(value);
-  };
+  // handleListItemClick = value => {
+  //   this.props.onRequestClose(value);
+  // };
 
 
   render() {
@@ -32,27 +41,6 @@ class SimpleDialog extends Component {
       <Dialog onRequestClose={this.handleRequestClose} {...other}>
         <DialogTitle>Create a new post</DialogTitle>
         <div>
-          {/* <List>
-            {emails.map(email =>
-              <ListItem button onClick={() => this.handleListItemClick(email)} key={email}>
-                <ListItemAvatar>
-                  <Avatar>
-                    <PersonIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={email} />
-              </ListItem>,
-            )}
-            <ListItem button onClick={() => this.handleListItemClick('addAccount')}>
-              <ListItemAvatar>
-                <Avatar>
-                  <AddIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="add account" />
-            </ListItem>
-          </List> */}
-      {/* /> */}
       <Input
 
         label="Label"
@@ -104,7 +92,7 @@ const SimpleDialogWrapped = SimpleDialog;
 class SimpleDialogDemo extends Component {
   state = {
     open: false,
-    selectedValue: emails[1],
+    // selectedValue: emails[1],
   };
 
   handleRequestClose = value => {
@@ -114,21 +102,14 @@ class SimpleDialogDemo extends Component {
   render() {
     return (
       <div>
-        {/* <Typography type="subheading">
-          Selected: {this.state.selectedValue}
-        </Typography> */}
-        {/* <br /> */}
         <Button fab color='accent' aria-label="add" style={{ position: 'fixed', bottom: 50, right: 50 }} onClick={() => this.setState({ open: true })}>
         <AddIcon />
         </Button>
-        {/* <FloatingActionButtons onClick={() => this.setState({ open: true })}>
-      </FloatingActionButtons> */}
         <SimpleDialogWrapped
           open={this.state.open}
           onRequestClose={this.handleRequestClose}
         />
       </div>
-          // selectedValue={this.state.selectedValue}
     );
   }
 }

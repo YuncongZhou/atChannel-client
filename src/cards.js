@@ -46,7 +46,7 @@ function SimpleCard(props) {
     } else {
       body = {direction: 0}
     }
-    const url = `http://localhost:4000/votes/${props['_id']}`
+    const url = `${process.env.REACT_APP_API_ROOT}votes/${props['_id']}`
     const a = fetch(url, {
       method: 'put',
       body: JSON.stringify(body),
@@ -65,17 +65,12 @@ function SimpleCard(props) {
           <Typography type="body2" >
             {props['body']}
           </Typography>
-          {/* <Router>
-        <Link to={`/post/${props._id}`}>Home</Link>
-    <Route exact path="/" component={Home}/>
-    <Route path={linking} component={About}/>
-    </Router> */}
           <Typography component="p">
            submitted on {props['timestamp']}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button href={`http://localhost:3000/comments/${props['_id']}`} dense>comments</Button>
+          <Button href={`/comments/${props['_id']}`} dense>comments</Button>
           <Button dense onClick={upvote}>{props['upvote']} UPVOTE</Button>
           <Button dense onClick={downvote}>{props['downvote']} DOWNVOTE</Button>
         </CardActions>
@@ -83,8 +78,6 @@ function SimpleCard(props) {
     </div>
   );
 }
-
-
 
 SimpleCard.propTypes = {
   classes: PropTypes.object.isRequired,
