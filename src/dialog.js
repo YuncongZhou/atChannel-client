@@ -1,12 +1,12 @@
 // @flow weak
 /* eslint-disable react/no-multi-comp */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import Dialog, { DialogTitle } from 'material-ui/Dialog';
-import AddIcon from 'material-ui-icons/Add';
-import Input from 'material-ui/Input/Input';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import Dialog, { DialogTitle } from "@material-ui/core/Dialog";
+import AddIcon from "@material-ui/icons/Add";
+import Input from "@material-ui/core/Input/Input";
 
 class SimpleDialog extends Component {
   handleRequestClose = () => {
@@ -20,40 +20,36 @@ class SimpleDialog extends Component {
       <Dialog onRequestClose={this.handleRequestClose} {...other}>
         <DialogTitle>Create a new post</DialogTitle>
         <div>
-      <Input
-
-        label="Label"
-        placeholder="URL"
-        fullWidth
-        margin="normal"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      <Input
-         label="Label"
-        placeholder="URL"
-        fullWidth
-        margin="wide"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      <Input
-        label="Label"
-        placeholder="Body"
-        fullWidth
-        multiline
-        rows="4"
-        margin="normal"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      <Button>
-        POST
-        </Button>
-
+          <Input
+            label="Label"
+            placeholder="URL"
+            fullWidth
+            margin="normal"
+            inputProps={{
+              "aria-label": "Description"
+            }}
+          />
+          <Input
+            label="Label"
+            placeholder="URL"
+            fullWidth
+            margin="wide"
+            inputProps={{
+              "aria-label": "Description"
+            }}
+          />
+          <Input
+            label="Label"
+            placeholder="Body"
+            fullWidth
+            multiline
+            rows="4"
+            margin="normal"
+            inputProps={{
+              "aria-label": "Description"
+            }}
+          />
+          <Button>POST</Button>
         </div>
       </Dialog>
     );
@@ -63,12 +59,12 @@ class SimpleDialog extends Component {
 SimpleDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   onRequestClose: PropTypes.func,
-  selectedValue: PropTypes.string,
+  selectedValue: PropTypes.string
 };
 
 class SimpleDialogDemo extends Component {
   state = {
-    open: false,
+    open: false
   };
 
   handleRequestClose = value => {
@@ -78,8 +74,14 @@ class SimpleDialogDemo extends Component {
   render() {
     return (
       <div>
-        <Button fab color='accent' aria-label="add" style={{ position: 'fixed', bottom: 50, right: 50 }} onClick={() => this.setState({ open: true })}>
-        <AddIcon />
+        <Button
+          fab
+          color="accent"
+          aria-label="add"
+          style={{ position: "fixed", bottom: 50, right: 50 }}
+          onClick={() => this.setState({ open: true })}
+        >
+          <AddIcon />
         </Button>
         <SimpleDialog
           open={this.state.open}
